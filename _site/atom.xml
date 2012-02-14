@@ -3,7 +3,7 @@
  <title>lenage博客</title>
  <link href="http://lenage.github.com/atom.xml" rel="self"/>
  <link href="http://lenage.github.com/"/>
- <updated>2012-02-14T23:14:59+08:00</updated>
+ <updated>2012-02-14T23:37:47+08:00</updated>
  <id>http://lenage.github.com/</id>
  <author>
    <name>lenage</name>
@@ -11,11 +11,13 @@
  </author>
  
    <entry>
-     <title>Test</title>
-     <link href="http://lenage.github.com/2012/01/14/test/"/>
-     <updated>2012-01-14T00:00:00+08:00</updated>
-     <id>http://lenage.github.com/2012/01/14/test</id>
-     <content type="html">&lt;p&gt;test&lt;code&gt;&lt;/code&gt;&lt;/p&gt;</content>
+     <title>github上的第一篇博客</title>
+     <link href="http://lenage.github.com/2012/02/14/test/"/>
+     <updated>2012-02-14T00:00:00+08:00</updated>
+     <id>http://lenage.github.com/2012/02/14/test</id>
+     <content type="html">&lt;p&gt;今天是情人节&lt;/p&gt;
+
+&lt;p&gt;test&lt;/p&gt;</content>
    </entry>
  
 </feed>
