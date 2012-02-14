@@ -1,0 +1,90 @@
+---
+title: Perceived Advantages of Writing the Specification first
+tags: 
+  - bdd
+  - specification
+  - opinion
+  - mocks 
+  - stubs
+  - philosophy
+  - long
+---
+
+I will try to summarize some of the perceived advantages of writing
+specifications first. The word 'perceived' indicates that I don't mean to say
+that the ideas presented here are hard facts. Rather, they are based on the
+anecdotal evidence of my senses and my experience. I'll talk about
+
+* How Specs are documentation (_this post_)
+* How testable code has clean interfaces
+* How testing forces you to think
+
+h2. Specs are the documentation
+
+If you apply some sort of quality control on your specifications, they will be
+readable. They should also reflect what you or (to a varying degree) your
+customer expect from the code. That said: Look at your specs as the only up to
+date documentation for the code.
+
+Having those specs makes your situation a lot better than having only the
+code. While you can't refactor code and keep it at the same time (for
+documentation purposes on what you already have), you _can_ refactor code and
+keep the specifications.
+
+Specs encode all the choices you've made during writing code. People that
+don't write specs have also made these same choices. _But only mentally_. And
+then forgotten about it before lunch. It doesn't feel differently, the code
+commits might even be exactly the same. Except, some time later, you (the guy
+who does "BDD":http://rspec.info) will still have a record of what you thought
+of (or didn't) when writing the code.
+
+I had to maintain code that looked like this once: 
+
+<pre class="sh_java"><code>
+public int someFunction(int p1, int p2) {
+  // Some code 
+  // Some more code
+  
+  if (p2 == 23) { // (1)
+    return -1;
+  }
+  
+  // Other code
+}
+</code></pre>
+
+The above snippet is anonymized to protect the innocent. The comment at (1)
+said something like 'this is a special case' or 'I've had to introduce this,
+otherwise it wouldn't work'. While I appreciate the comment, it doesn't help
+at all.
+
+My task was to clean up this piece of code and to rewrite some of it. As it
+happens, no tests/specs were available, making that thin comment everything I
+could hang myself on. In situations like these, you have two choices: Delete
+the whole exception and wait for things to break or leave it in and hope
+someone else breaks it later. Either way, this is a liability that waits to
+bite you the next time around. Having to remember a functions with a positive
+image may return a special negative value that indicates mystery going on
+makes reasoning about the system a complex task.
+
+It would have been an altogether different matter if I had had specifications
+like these:
+
+<pre class="sh_ruby"><code>
+describe "someFunction" do
+  it "should return -1 (exceptionally) when flab hits the fob" do
+    obj.someFunction(1, 2).should == -1
+  end
+end
+</code></pre>
+
+In that case, I might have left the code as it was. There's a clear reason
+for why this ugly snippet has come to be. And I even have a choice: I let it
+stand as it is (for working code can't be all bad) or I rip it out with some
+confidence in what I am doing. 
+
+There's a
+"guy":http://www.ted.com/talks/bill_stone_explores_the_earth_and_space.html
+who wants to fly to the moon without the fuel to get back. My job isn't like
+that. I want to be able to go back and revise my choices. That's why I write
+them down.
