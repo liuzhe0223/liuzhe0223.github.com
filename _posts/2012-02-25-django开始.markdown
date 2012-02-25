@@ -1,0 +1,7 @@
+#开始用django写一个自己的blog
+
+  今天看了看自己的blog，wordpress或着拷别人做好的，想自己写一个。用python的django框架，因为寒假看了一部分，边做边看吧。
+
+快到时间啦，，来个开始吧
+
+ django-admin.py startproject myblog   
