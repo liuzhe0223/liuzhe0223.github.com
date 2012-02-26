@@ -158,6 +158,9 @@ section#posts{
  -webkit-border-top-left-radius: 10px;
  -webkit-border-bottom-left-radius: 10px;
  -webkit-border-bottom-right-radius: 10px;
+ box-shadow: 2px 2px 8px #aaa;
+ -webkit-box-shadow: 2px 2px 8px #aaa;
+ -moz-box-shadow: 2px 2px 8px #aaa;
 }
 
 section#pages{
