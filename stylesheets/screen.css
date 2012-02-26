@@ -206,7 +206,9 @@ section#post{
 }
 
 div.post{
-  text-indent: 8%
+  text-indent: 8%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 div.postdate{
   text-align: center;
