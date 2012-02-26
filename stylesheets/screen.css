@@ -151,3 +151,11 @@ section#pages{
   width: 100%;
   text-align: center;
 }
+section#post{
+  width: 100%;
+  text-align: center;
+}
+section#disqus{
+  width: 100%;
+  text-align: center;
+}
