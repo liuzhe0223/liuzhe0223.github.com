@@ -206,16 +206,12 @@ section#post{
 }
 
 div.post{
-  text-indent: 20%
+  text-indent: 8%
 }
 div.postdate{
   text-align: center;
 }
 
-p{
-  margin-left: 4.5em;
-  margin-right: 4.5em;
-}
 section#disqus{
   width: 50%;
   text-align: center;
