@@ -143,20 +143,20 @@
 }
 
 section#posts{
-  width: 100%;
+  width: 50%;
   text-align :center;
 }
 
 section#pages{
-  width: 100%;
+  width: 50%;
   text-align: center;
 }
 section#post{
-  width: 100%;
+  width: 50%;
   text-align: center;
 }
 section#disqus{
-  width: 75%;
+  width: 50%;
   text-align: center;
 }
 
