@@ -141,6 +141,10 @@
 .highlight .il {
   color: #009999;
 }
+li{
+  list-style:none;
+
+}
 
 section#posts{
   width: 50%;
