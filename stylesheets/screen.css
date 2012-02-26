@@ -146,22 +146,30 @@ section#posts{
   width: 50%;
   text-align :center;
   background-color: white;
+  nargin-left: auto;
+  nargin-right: auto;
 }
 
 section#pages{
   width: 50%;
   text-align: center;
   background-color: white;
+  nargin-left: auto;
+  nargin-right: auto;
 }
 section#post{
   width: 50%;
   text-align: center;
   background-color: white;
+  nargin-left: auto;
+  nargin-right: auto;
 }
 section#disqus{
   width: 50%;
   text-align: center;
   background-color: white;
+  nargin-left: auto;
+  nargin-right: auto;
 }
 
 
