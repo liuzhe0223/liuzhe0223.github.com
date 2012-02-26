@@ -7,10 +7,10 @@ markdown: rdiscount
 
 # configuration required for some pages
 
-domain: blog.example.com
-title: My Blog Title
-author: Me
-email: me@example.com
+domain: liuzhe0223.github.com
+title: Zhe's blog
+author: Liu Zhe
+email: liuzhe0223@gmail.com
 
 # configuration for ehancements, uncomment to enable
 
@@ -20,8 +20,8 @@ email: me@example.com
 # google_analytics:
 #   account: UA-XXXXX-X
 
-# github:
-#   username: ghusername
+github:
+  username: liuzhe0223
 
-# disqus:
-#   id: disqusid
+disqus:
+   id: liuzhe0223
