@@ -154,22 +154,22 @@ section#pages{
   width: 50%;
   text-align: center;
   background-color: white;
-  nargin-left: auto;
-  nargin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 section#post{
   width: 50%;
   text-align: center;
   background-color: white;
-  nargin-left: auto;
-  nargin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 section#disqus{
   width: 50%;
   text-align: center;
   background-color: white;
-  nargin-left: auto;
-  nargin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 
