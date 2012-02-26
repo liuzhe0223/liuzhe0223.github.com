@@ -3,4 +3,4 @@ layout: default
 title: About
 ---
 
-All about me and my blog...
+我是一名在校的大二学生。喜欢新技术，喜欢linux。
