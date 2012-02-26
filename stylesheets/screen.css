@@ -150,6 +150,14 @@ section#posts{
   margin-right: auto;
   border-style: groove;
   border-color:lightgray;
+ -moz-border-radius-topleft: 20px;
+ -moz-border-radius-topright: 20px;
+ -moz-border-radius-bottomleft: 10px;
+ -moz-border-radius-bottomright: 10px;
+ -webkit-border-top-rightright-radius: 20px;
+ -webkit-border-top-left-radius: 20px;
+ -webkit-border-bottom-left-radius: 10px;
+ -webkit-border-bottom-rightright-radius: 10px;
 }
 
 section#pages{
