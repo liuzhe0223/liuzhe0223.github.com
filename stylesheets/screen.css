@@ -217,7 +217,8 @@ div.postdate{
 
 div#myname{
   text-align: center;
-  font-color: lightgray;
+  font-color: silver;
+  font-variant: small-caps;
 }
 
 section#disqus{
