@@ -145,19 +145,23 @@
 section#posts{
   width: 50%;
   text-align :center;
+  background-color: white;
 }
 
 section#pages{
   width: 50%;
   text-align: center;
+  background-color: white;
 }
 section#post{
   width: 50%;
   text-align: center;
+  background-color: white;
 }
 section#disqus{
   width: 50%;
   text-align: center;
+  background-color: white;
 }
 
 
