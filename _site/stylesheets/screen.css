@@ -141,3 +141,9 @@
 .highlight .il {
   color: #009999;
 }
+
+section#posts{
+  float: none;
+  width: 80%;
+
+}
