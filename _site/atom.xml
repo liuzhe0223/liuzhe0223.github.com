@@ -4,13 +4,22 @@
  <title>Zhe's blog</title>
  <link href="http://liuzhe0223.github.com/atom.xml" rel="self"/>
  <link href="http://liuzhe0223.github.com/"/>
- <updated>2012-02-26T13:04:34+08:00</updated>
+ <updated>2012-02-26T14:25:55+08:00</updated>
  <id>http://liuzhe0223.github.com/</id>
  <author>
    <name>Liu Zhe</name>
    <email>liuzhe0223@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>test</title>
+   <link href="http://liuzhe0223.github.com/2012/02/26/test-post.html"/>
+   <updated>2012-02-26T00:00:00+08:00</updated>
+   <id>http://liuzhe0223.github.com/2012/02/26/test-post</id>
+   <content type="html">&lt;p&gt;blog测试&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Second Post</title>
@@ -28,15 +37,6 @@
 
 
 
-</content>
- </entry>
- 
- <entry>
-   <title>First post</title>
-   <link href="http://liuzhe0223.github.com/2010/11/01/first-post.html"/>
-   <updated>2010-11-01T00:00:00+08:00</updated>
-   <id>http://liuzhe0223.github.com/2010/11/01/first-post</id>
-   <content type="html">&lt;p&gt;This is the first post.  It has been updated since the post so has a last_updated value in the frontmatter.&lt;/p&gt;
 </content>
  </entry>
  
