@@ -25,3 +25,5 @@ github:
 
 disqus:
    id: liuzhe0223
+
+self.content = File.read(File.join(base, name), :encoding => "utf-8")
