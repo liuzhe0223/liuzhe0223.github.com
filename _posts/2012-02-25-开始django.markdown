@@ -1,2 +1,6 @@
+---
+layout: post
+开始django
+---
 今天看了看自己的blog，很乱。决定自己做一个，寒假看了django，觉定用python做一个。时间快到啦，先来个开始
   django-admin.py startproject myblog
