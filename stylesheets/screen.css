@@ -216,7 +216,7 @@ div.postdate{
 
 div#myname{
   text-align: center;
-
+  font-color: lightgray;
 }
 
 section#disqus{
