@@ -3,14 +3,14 @@ layout: default
 description: A description about my blog homepage
 ---
 
-<section id="posts">
+<div id="posts">
   <h2>The thing I do recently:</h2>
-  <nav>
+  <ul>
     {% for post in site.posts %}
       <li><span>{{ post.date | date_to_string }}</span> - <a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endfor %}
-  </nav>
-</section>
+  </ul>
+</div>
 
 <div id="pages">
   <h2>Pages</h2>
