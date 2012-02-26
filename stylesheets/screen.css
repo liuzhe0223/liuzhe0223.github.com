@@ -205,7 +205,10 @@ section#post{
  -moz-box-shadow: 2px 2px 8px #aaa;
 }
 
-
+div{
+  margin-bottom: 1.43em;
+  margin-top: 1.43em;
+}
 div.postdate{
   text-align: center;
 }
@@ -213,7 +216,6 @@ div.postdate{
 p{
   margin-left: 4.5em;
   margin-right: 4.5em;
-  margin-bottom: 1.43em;
 }
 section#disqus{
   width: 50%;
