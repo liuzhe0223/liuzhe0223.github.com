@@ -185,6 +185,8 @@ section#pages{
  box-shadow: 2px 2px 8px #aaa;
  -webkit-box-shadow: 2px 2px 8px #aaa;
  -moz-box-shadow: 2px 2px 8px #aaa;
+  margin-bottom: 1.43em;
+  margin-top: 1.43em;
 }
 section#post{
   width: 50%;
