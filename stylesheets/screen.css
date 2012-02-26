@@ -206,8 +206,8 @@ section#post{
 }
 
 div.post{
-  margin-bottom: 1.43em;
-  margin-top: 1.43em;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 div.postdate{
   text-align: center;
