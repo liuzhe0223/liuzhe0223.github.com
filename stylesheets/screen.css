@@ -214,6 +214,11 @@ div.postdate{
   text-align: center;
 }
 
+div#myname{
+  margin-right: 8%;
+
+}
+
 section#disqus{
   width: 50%;
   text-align: center;
