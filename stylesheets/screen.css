@@ -160,6 +160,10 @@ section#posts{
  -moz-box-shadow: 2px 2px 8px #aaa;
 }
 
+nav#postsnav{
+  text-align: left;
+}
+
 section#pages{
   width: 50%;
   text-align: center;
