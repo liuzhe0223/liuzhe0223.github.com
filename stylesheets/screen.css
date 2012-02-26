@@ -205,8 +205,14 @@ section#post{
  -moz-box-shadow: 2px 2px 8px #aaa;
 }
 
+
+div{
+  text-align: center;
+}
+
 p{
   margin-left: 4.5em;
+  margin-right: 4.5em;
 }
 section#disqus{
   width: 50%;
