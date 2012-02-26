@@ -1,6 +1,6 @@
 ---
 layout: post
-title: github上的第一篇博客 
+title: github上的第一篇客 
 ---
 今天是情人节
 
