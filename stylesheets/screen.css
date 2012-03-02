@@ -211,6 +211,11 @@ section#pages{
  -webkit-box-shadow: 2px 2px 8px #aaa;
  -moz-box-shadow: 2px 2px 8px #aaa;
 }
+
+section#pagesnav li{
+  float: none;
+}
+
 section#post{
   width: 50%;
   text-align: left;
