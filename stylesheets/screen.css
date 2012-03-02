@@ -164,6 +164,26 @@ section#posts{
  -moz-box-shadow: 2px 2px 8px #aaa;
 }
 
+section#maiku{
+  margin-top: 5%;
+  width: 50%;
+  text-align: center;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+ -moz-border-radius-topleft: 10px;
+ -moz-border-radius-topright: 10px;
+ -moz-border-radius-bottomleft: 10px;
+ -moz-border-radius-bottomright: 10px;
+ -webkit-border-top-right-radius: 10px;
+ -webkit-border-top-left-radius: 10px;
+ -webkit-border-bottom-left-radius: 10px;
+ -webkit-border-bottom-right-radius: 10px;
+ box-shadow: 2px 2px 8px #aaa;
+ -webkit-box-shadow: 2px 2px 8px #aaa;
+ -moz-box-shadow: 2px 2px 8px #aaa;
+}
+
 nav#postsnav{
   text-align: left;
   margin-bottom: 1.43em;
