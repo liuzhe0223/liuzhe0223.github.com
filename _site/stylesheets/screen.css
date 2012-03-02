@@ -141,10 +141,13 @@
 .highlight .il {
   color: #009999;
 }
+li{
+  list-style:none;
+
+}
 
 section#posts{
   width: 50%;
-  text-align :center;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
@@ -161,7 +164,16 @@ section#posts{
  -moz-box-shadow: 2px 2px 8px #aaa;
 }
 
+nav#postsnav{
+  text-align: left;
+  margin-bottom: 1.43em;
+  margin-top: 1.43em;
+  margin-left: 7.5em;
+  padding-right: 3em;
+}
+
 section#pages{
+  margin-top: 5%;
   width: 50%;
   text-align: center;
   background-color: white;
@@ -181,7 +193,7 @@ section#pages{
 }
 section#post{
   width: 50%;
-  text-align: center;
+  text-align: left;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
@@ -197,12 +209,29 @@ section#post{
  -webkit-box-shadow: 2px 2px 8px #aaa;
  -moz-box-shadow: 2px 2px 8px #aaa;
 }
+
+div.post{
+  text-indent: 8%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+div.postdate{
+  text-align: center;
+}
+
+div#myname{
+  text-align: center;
+  font-color: silver;
+  font-variant: small-caps;
+}
+
 section#disqus{
   width: 50%;
   text-align: center;
   background-color: white;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 5%;
 }
 
 

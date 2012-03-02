@@ -4,23 +4,16 @@
   <!--  Homepage -->
   <url>
     <loc>http://liuzhe0223.github.com/</loc>
-    <lastmod>2012-02-26</lastmod>
+    <lastmod>2012-03-02</lastmod>
     <changefreq>daily</changefreq>
 		<priority>1.0</priority>
   </url>
 
   
   <url>
-    <loc>http://liuzhe0223.github.com/2012/02/26/test-post.html</loc>
+    <loc>http://liuzhe0223.github.com/2012/02/26/first-post.html</loc>
     
     <lastmod>2012-02-26</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://liuzhe0223.github.com/2010/11/10/second-post.html</loc>
-    
-    <lastmod>2010-11-10</lastmod>
     
   </url>
   
@@ -29,7 +22,7 @@
   <url>
     <loc>http://liuzhe0223.github.com/index.html</loc>
     
-    <lastmod>2012-02-26</lastmod>
+    <lastmod>2012-03-02</lastmod>
     
     
     
@@ -38,7 +31,16 @@
   <url>
     <loc>http://liuzhe0223.github.com/about.html</loc>
     
-    <lastmod>2012-02-26</lastmod>
+    <lastmod>2012-03-02</lastmod>
+    
+    
+    
+  </url>
+  
+  <url>
+    <loc>http://liuzhe0223.github.com/maikunote.html</loc>
+    
+    <lastmod>2012-03-02</lastmod>
     
     
     
