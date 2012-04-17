@@ -1,6 +1,27 @@
-markdown: maruku
-permalink: pretty
+# standard jekyll configuration
+
+permalink: date
 pygments: true
-safe: false
-#paginate: 5
-#limit_posts: 5
+exclude: ['Rakefile', 'README.md', 'config.rb']
+markdown: rdiscount
+
+# configuration required for some pages
+
+domain: liuzhe0223.github.com
+title: Zhe's blog
+author: Liu Zhe
+email: liuzhe0223@gmail.com
+
+# configuration for ehancements, uncomment to enable
+
+# feedburner:
+#   id: feedburnerid
+
+# google_analytics:
+#   account: UA-XXXXX-X
+
+github:
+  username: liuzhe0223
+
+disqus:
+   id: liuzhe0223

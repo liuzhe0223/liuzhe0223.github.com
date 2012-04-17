@@ -1,7 +1,0 @@
----
-layout: post
-title: github上的第一篇博客 
----
-今天是情人节
-
-test

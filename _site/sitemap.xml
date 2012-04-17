@@ -1,21 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!--  Homepage -->
+  <url>
+    <loc>http://liuzhe0223.github.com/</loc>
+    <lastmod>2012-03-02</lastmod>
+    <changefreq>daily</changefreq>
+		<priority>1.0</priority>
+  </url>
+
   
   <url>
-    <loc>http://lenage.github.com/2012/02/14/test/</loc>
-    <lastmod>2012-02-14</lastmod>
+    <loc>http://liuzhe0223.github.com/2012/02/26/first-post.html</loc>
+    
+    <lastmod>2012-02-26</lastmod>
+    
+  </url>
+  
+
+  
+  <url>
+    <loc>http://liuzhe0223.github.com/index.html</loc>
+    
+    <lastmod>2012-03-02</lastmod>
+    
+    
+    
   </url>
   
   <url>
-    <loc>http://lenage.github.com/</loc>
-    <lastmod>2012-02-15</lastmod>
+    <loc>http://liuzhe0223.github.com/about.html</loc>
+    
+    <lastmod>2012-03-02</lastmod>
+    
+    
+    
   </url>
+  
   <url>
-    <loc>http://lenage.github.com/about/</loc>
-    <lastmod>2011-05-12</lastmod>
+    <loc>http://liuzhe0223.github.com/maikunote.html</loc>
+    
+    <lastmod>2012-03-02</lastmod>
+    
+    
+    
   </url>
-  <url>
-    <loc>http://lenage.github.com/archive/</loc>
-    <lastmod>2012-02-15</lastmod>
-  </url>
-</urlset> 
+  
+
+</urlset>
