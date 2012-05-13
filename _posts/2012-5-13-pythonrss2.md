@@ -12,9 +12,6 @@ tags: python,django
 
 就去查数据库中的文件，发现数据没有引号，猜想应该是django中模板解释时有错，去查看django模板的详细文档，看到模板解释时遇到html格式会转义
 
-#{% autoescape off %}
-#   {{i.content}}
-#{% endautoescape %}
 
 这样i.content中的html就不会被转义la
 
