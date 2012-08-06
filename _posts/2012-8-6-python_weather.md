@@ -11,7 +11,6 @@ tags: [python]
 说说期间遇到的问题：
 
 由于google天气返回的是xml格式的数据
-(google api:  http://www.google.com/ig/api?hl=zh_cn&weather=_)
 在weather后加上地址就行啦，hl=zh_cn 表示返回的xml data值为中文
 
 所以先找了python解析xml的模块，python有很多 ｘｍｌ的解析模块
@@ -24,4 +23,3 @@ tags: [python]
 返回的xml应该是utf-8的，但 xml.decode('utf-8') 一直报错，万没想到的是 ta居然是
 gb2312的，  xml.decode('gb2312').encode('urf-8')  , 解决，
 
-有关xml解析的代码：https://github.com/liuzhe0223/code/blob/master/python/google_weather.py
