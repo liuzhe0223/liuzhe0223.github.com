@@ -11,7 +11,7 @@ tags: [闲]
 说说期间遇到的问题：
 
 由于google天气返回的是xml格式的数据
-(google api:  http://www.google.com/ig/api?hl=zh_cn&weather=%E8%8F%8F%E6%B3%BD)
+(google api:  http://www.google.com/ig/api?hl=zh_cn&weather=_)
 在weather后加上地址就行啦，hl=zh_cn 表示返回的xml data值为中文
 
 所以先找了python解析xml的模块，python有很多 ｘｍｌ的解析模块
