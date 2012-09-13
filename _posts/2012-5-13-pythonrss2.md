@@ -2,6 +2,7 @@
 layout: post
 title: pythonrss2
 tags: python,django 
+category: 动手
 ---
 
 这两天去做acm省赛的志愿者，没有blog

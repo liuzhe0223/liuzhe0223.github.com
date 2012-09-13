@@ -2,6 +2,7 @@
 layout: post
 title: python抓取rss
 tags: python,django
+category: 动手
 ---
 
 
