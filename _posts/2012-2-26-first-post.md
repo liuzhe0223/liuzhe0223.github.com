@@ -4,4 +4,4 @@ title: First blog
 tags: [闲]
 ---
 
-弄完blog,发一个。
+弄完blog,发一个 。
