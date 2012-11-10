@@ -14,7 +14,7 @@ category: 动手
 
 去查数据库中的文件，发现数据没有引号，猜想应该是django中模板解释时有错，去查看django模板的详细文档，看到模板解释时遇到html格式会转义
 
-在i.comtent前后分别加上 autoescape off 和 endautoescape 标签，这样i.content中的html就不会被转义la
+在i.comtent前后分别加上 autoescape off 和 endautoescape 标签，这样i.content中的html就不会被转义la:
 
 页面刷新，漂亮的界面出来啦
 

@@ -28,7 +28,7 @@ category: linux
 
     设定时区:
     
-    	ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime
+    	ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
     
     mkinitcpio -p linux  生成内核镜像
     wiki中前几步中已经把 grub 安装到系统里了, 配置完以上以后, 就要配置grub了, 首先将grub的引导
