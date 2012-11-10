@@ -2,7 +2,7 @@
 layout: post
 title: 读编程珠玑1
 tags: [编程珠玑,读书]
-category: 读书
+category: 学习
 ---
 
 编程珠玑读书：

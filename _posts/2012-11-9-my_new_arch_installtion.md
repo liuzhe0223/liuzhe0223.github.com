@@ -2,7 +2,7 @@
 layout: post
 title: 新arch安装小计
 tags: linux
-category: linux
+category: 学习
 ---
 
 
