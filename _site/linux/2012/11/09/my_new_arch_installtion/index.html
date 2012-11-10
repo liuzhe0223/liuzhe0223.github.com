@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+   <title>新arch安装小计 &larr; </title>
+   <meta name="author" content="liuzhe" />
+
+   <link rel="start" href="/" />
+
+	
+	
+	
+  	<link rel="alternate" type="application/atom+xml" href="http://feeds.feedburner.com/liuzhe0223@gmail.com" title="RSS feed" />
+	
+	
+
+   <!-- syntax highlighting CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/syntax.css" type="text/css" />
+
+   <!-- Homepage CSS -->
+   <link rel="stylesheet" href="/assets/themes/mark-reid/css/screen.css" type="text/css" />
+
+</head>
+<body id="">
+<div id="site">
+  
+  <div id="header">
+    <h1>
+    	<a href="/" title="liuzhe">liuzhe</a>
+    	<span class="byline">&larr; <a href="/">liuzhe</a></span>
+    </h1>
+    <ul class="nav">
+      <li><a class="home" href="/">Home</a></li>
+      <li><a  href="/archive.html">Archive</a></li>
+      <li><a  href="/pages.html">Pages</a></li>
+      <li><a  href="/categories.html">Categories</a></li>
+      <li><a  href="/tags.html">Tags</a></li>
+    </ul>
+  </div>
+
+  
+<div id="page">
+	
+  <h1 class="emphnext">新arch安装小计</h1>
+  <ul class="tag_box inline">
+  
+  
+
+
+  
+     
+    	<li><a href="/tags.html#linux-ref">linux <span>1</span></a></li>
+    
+  
+
+
+
+  </ul>
+
+  <p>不用arch已经有一段时间啦，看完孙同学的帖子，又勾起了我的。。 小记一下这次安装,主要是遇到的问题</p>
+
+<p>安装基本系统</p>
+
+<p>这次arch的安装方式和以前大不一样，还是看wiki。因为正在使用ubuntu，/home 的挂载分区准备留着</p>
+
+<ul>
+<li>
+<p>首先在win上下载了一个linuxliveusb-creator 的小软件做了一个 arch的usb安装u盘（有点惭愧啊，用瘟到死啦，历史因素，当还是小白时就用这个了），wiki上提到还可以在linux上用dd直接将镜像写到优盘。 64位arch的安装（个人喜好），这次就没有原来的setup工具啦，看wiki的流程，需要手动对硬盘进行分区，用fdisk或者cfdisk，cfdisk 稍微直观一点，因为我没有想要改变分区，所以直接对硬盘进行格式化，我习惯linux分区为四个，/boot ,/ ,/home ,swap。所以我只对boot和根需要的分区格式化,详细请看 <a href='https://wiki.archlinux.org/index.php/Installation_Guide'>archwiki</a>.</p>
+</li>
+
+<li>
+<p>安装基本系统一定要注意各分区在/mnt下的挂载, pacstrap 安装完基本系统后 chroot到 /mnt下目的系统时,就是需要修改一些配置文件(除了下面其他的没有修改,应为不太懂), 我修改了:</p>
+
+<p>locale.conf</p>
+
+<pre><code>LANG=&quot;en_US.UTF-8&quot;</code></pre>
+
+<p>locale.gen 将其中 zh_cn 开头的行解注释 , 还有 en_US.UTF-8 解注释, 是本地支持所选的字符集好要执行命令:</p>
+
+<pre><code>locale-gen</code></pre>
+
+<p>设定时区:</p>
+
+<pre><code>ln -s /usr/share/zoneinfo/Europe/Athens /etc/localtime</code></pre>
+
+<p>mkinitcpio -p linux 生成内核镜像 wiki中前几步中已经把 grub 安装到系统里了, 配置完以上以后, 就要配置grub了, 首先将grub的引导 安装到硬盘, 然后生成 grub.cfg</p>
+
+<pre><code>grub-install   /dev/sda
+grub-makconfig  &gt; /boot/grub/grub.cfg</code></pre>
+
+<p>exit 退出目的系统, unmount 后 重启</p>
+</li>
+
+<li>
+<p>接下来要配置x 先执行 <a href='https://wiki.archlinux.org/index.php/Beginners%27_Guide'>archwiki</a> 上的几步,测试完x 之后安装桌面环境, 我这几天一直在用kde 所以来个kde, 我先安装了 kdebase一路默认安完然后又安装 dbus, 接着应该用 systemctl enbale dus 让他开机启动, 但报错啦, 有人说使用systemd就默认开启啦, 后来正式确实是, 我的命令如下, 开始前先对 mirrlist 修改, 我将163的放在最前面,然后执行 dhcpd 获取ip:</p>
+
+<pre><code>pacman -S  kdebase
+	pacman -S  kde-l10n-zh_cn
+pacman -S  wqy-zenhei
+systemctl enable kdm</code></pre>
+</li>
+
+<li>
+<p>接下来添加一个的用户, 重启就能进kde啦</p>
+</li>
+
+<li>
+<p>装完系统后就来配置我的开发环境, ruby on rails, 当然是 <a href='http://ruby-china.org/wiki/install_ruby_guide'>ruby-chian-wiki</a>所不同的是 依赖包, 先不用装 ,先装好rvm ,然后 rvm requirement 查看提示安装依赖包. 安装 mysql后配置root密码,使用命令:</p>
+
+<pre><code>mysql-secure-installation .</code></pre>
+</li>
+
+<li>
+<p>zsh 和 oh-my-zsh 的主题 <a href='https://github.com/robbyrussell/oh-my-zsh'>参考</a> github上的安装指南</p>
+</li>
+
+<li>
+<p>vim 并安装bundule <a href='https://github.com/gmarik/vundle'>参考</a></p>
+</li>
+
+<li>
+<p>播放器 mplayer 还有 音乐播放器cmus , 我的第二编辑器 sublime(这个要先安装yaourt <a href='https://wiki.archlinux.org/index.php/Yaourt'>参考</a>)gtalk kde下用 kdenetwork-kopete, 还有新发现的一个好用的终端模拟器 yakuake, chromium 浏览器</p>
+</li>
+
+<li>
+<p>中文输入 fcitx 并 yaourt 了 googlepinyin 输入法 ,fcitx需要简单配置, 编辑 ~/.xprofile 添加:</p>
+
+<pre><code>export XMODIFIERS=@im=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx</code></pre>
+</li>
+
+<li>
+<p>还有就是装完后状态栏没有声音选项, 然后又装了 kde-multimedia.现在就是这些</p>
+</li>
+</ul>
+
+  <address class="signature">
+    <a class="author" href="/">liuzhe</a> 
+    <span class="date">09 November 2012</span>
+    <span class="location"></span>
+  </address>
+  
+  <div class="prev-next">
+  
+  
+    <a href="/linux/2012/09/13/the_new_arch" class="prev" title="新版arch，碉堡啦">&larr; Earlier Post</a>
+  
+  </div>
+  
+</div><!-- End Page -->
+
+
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'liuzhe0223'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+
+
+  
+  <div id="footer">
+  	<address>
+  		<span class="copyright">
+  			Content by <a href="/info/site.html">liuzhe</a>. Design by 
+  			<a href="http://mark.reid.name/">Mark Reid</a>
+  			<br/>
+  			(<a rel="licence" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Some rights reserved</a>)			
+  		</span>
+  		<span class="engine">
+  			Powered by <a href="http://github.com/mojombo/jekyll/" title="A static, minimalist CMS">Jekyll</a>
+  		</span>
+  	</address>
+  </div>
+  
+</div>
+
+<!--[if IE 6]>
+<script type="text/javascript"> 
+	/*Load jQuery if not already loaded*/ if(typeof jQuery == 'undefined'){ document.write("<script type=\"text/javascript\"   src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js\"></"+"script>"); var __noconflict = true; } 
+	var IE6UPDATE_OPTIONS = {
+		icons_path: "http://static.ie6update.com/hosted/ie6update/images/"
+	}
+</script>
+<script type="text/javascript" src="http://static.ie6update.com/hosted/ie6update/ie6update.js"></script>
+<![endif]-->
+
+  
+</body>
+</html>
+
