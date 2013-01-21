@@ -1,6 +1,6 @@
 ---
 layout: post
-title: python_socket_server
+title: ruby thread
 tags: python
 category: 学习
 
