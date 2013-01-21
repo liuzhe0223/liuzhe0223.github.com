@@ -37,6 +37,10 @@ i = 0
 	end
 end
 
+threads.each do |thr|
+	thr.join
+end
+
 {% endhighlight %}
 
 过程中也熟悉一下ruby的一些http,解析html, 字符编码 和 正则的一些东西
