@@ -1,7 +1,7 @@
 ---
 layout: post
 title: ruby thread
-tags: python
+tags: ruby 
 category: 学习
 
 ---
