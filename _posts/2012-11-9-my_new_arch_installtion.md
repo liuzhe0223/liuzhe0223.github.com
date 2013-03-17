@@ -52,7 +52,7 @@ category: 学习
 		mysql-secure-installation .
 
 * zsh 和 oh-my-zsh 的主题  [参考](https://github.com/robbyrussell/oh-my-zsh) github上的安装指南
-* vim 并安装bundule [参考](https://github.com/gmarik/vundle)
+* vim 并安装vundle [参考](https://github.com/gmarik/vundle)
 * 播放器 mplayer 还有 音乐播放器cmus , 我的第二编辑器 sublime(这个要先安装yaourt [参考](https://wiki.archlinux.org/index.php/Yaourt))gtalk  kde下用 kdenetwork-kopete, 还有新发现的一个好用的终端模拟器  yakuake, chromium 浏览器
 * 中文输入 fcitx 并  yaourt 了 googlepinyin 输入法 ,fcitx需要简单配置, 编辑 ~/.xprofile 添加:
 
