@@ -8,9 +8,19 @@ tagline: Supporting tagline
 
 <ul class="posts">
   {% for post in site.posts %}
+	<h4>学习</h4> 
+	<br />
 	{% if post.category == '学习' %}
-		<h3>学习</h3>
+    	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
+	{% endif %}
+	<br />
+	<br />
+   {% for post in site.posts %}
+	<h4>闲</h4> 
+	<br />
+	{% if post.category == '闲' %}
     	<li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a></li>
 	{% endif %}
   {% endfor %}
+ {% endfor %}
 </ul>
