@@ -27,13 +27,13 @@ class NetBase:
 		while(True):
 			clientsock, clientaddr = self.sock.accept()
 			print "got a client"
-			thr = got_client(clientsock)
+			thr = GetClient(clientsock)
 			self.client_thread_lists.append(thr);
 			thr.start()
 			print "start a thread"
 
 
-class got_client(threading.Thread):
+class GetClient(threading.Thread):
 
 	def __init__(self, clientsocket):
 		threading.Thread.__init__(self)
