@@ -47,7 +47,7 @@ class GetClient(threading.Thread):
 
 
 if __name__ == "__main__":
-	server = server.NetBase()
+	server = NetBase()
 	server.get_message()
 {% endhighlight %}
 
@@ -74,7 +74,7 @@ class NetBase:
 
 
 if __name__ == "__main__":
-	client = client.NetBase()
+	client = NetBase()
 	client.send_message()
 {% endhighlight %}
 
