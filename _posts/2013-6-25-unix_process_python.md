@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 理解unix进程,python
+title: 理解unix进程python
 tags: python
 category: 学习
 ---
