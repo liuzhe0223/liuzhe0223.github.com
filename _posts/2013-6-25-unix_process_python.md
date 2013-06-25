@@ -1,9 +1,10 @@
 ---
 layout: post
-title: 理解unix进程
-tags: pyhton,unix
+title: 理解unix进程,python
+tags: [unix,python]
 category: 学习
 ---
+
 
 
 进程皆有标识
@@ -53,4 +54,4 @@ resource.setrlimit(resource.RLIMIT_NOFILE,(4000,4096))
 
 resource.getrlimit(resource.RLIMIT_NOFILE)
 => (4000,4096)
-``
+`
