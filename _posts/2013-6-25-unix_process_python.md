@@ -45,7 +45,8 @@ category: 学习
     sys.stdout.fileno()
     => 1
     sys.stderr.fileno()
-=> 2
+    => 2
+    
 {% endhighlight %}
 
 进程皆有资源限制
