@@ -49,9 +49,10 @@ resource.getrlimit(resource.RLIMIT_NOFILE)
 
 >返回为一个元组，第一个返回值为软限制，第二个返回值为硬限制。软限制其实不算限制，超过软限制程序会抛出异常，进程可以修改软限制，但硬限制只有在进程有足够的权限时才能修改。我们来试着修改一下限制,修改为的两个参数尽量不要超过原来硬限制的值（当前硬限制的值), 也就是说如果修改后已修改后的为准：
 
-````
+```
 resource.setrlimit(resource.RLIMIT_NOFILE,(4000,4096))
 
 resource.getrlimit(resource.RLIMIT_NOFILE)
 => (4000,4096)
-`
+```
+
