@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 理解unix进程
-tags: unix pyhton
+tags: pyhton,unix
 category: 学习
 ---
 
