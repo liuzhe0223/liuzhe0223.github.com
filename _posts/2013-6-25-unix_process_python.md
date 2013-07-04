@@ -68,3 +68,35 @@ category: 学习
     => (4000,4096)
     
 {% endhighlight %}
+
+其它相关使用资源的查询与修改类似，比如现在进程所能衍生的进程的限制，参照 http://docs.python.org/2/library/resource.html
+
+
+进程皆有环境
+---------------
+
+环境指的是环境变量，python读取环境变量：
+
+{% highlight python %}
+
+    os.environ.get('PATH')
+    =>
+    '/home/vagrant/.rvm/gems/ruby-2.0.0-p247/bin:/home/vagrant/.rvm/gems/ruby-2.0.0-p247@global
+    /bin:/home/vagrant/.rvm/rubies/ruby-2.0.0-p247/bin:/home/vagrant/.rvm/bin:/usr/local/sbin:/
+    usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/vagrant_ruby/bin'
+
+{% endhighlight %}
+
+
+进程皆有参数
+-----------------
+
+进程可以访问 sys.argv 的数组来获得命令行传进来的参数
+
+    import sys
+
+    print(sys.argv[0])
+    print(sys.argv[1])
+
+编写命令行程序的话可以用optparse 
+http://docs.python.org/2/library/optparse.html
