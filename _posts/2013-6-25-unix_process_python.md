@@ -100,3 +100,6 @@ category: 学习
 
 编写命令行程序的话可以用optparse 
 http://docs.python.org/2/library/optparse.html
+
+
+未完。。。
