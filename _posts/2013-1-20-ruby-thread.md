@@ -34,9 +34,9 @@ i = 0
 				retry
 			end
 		end
-	end
-	file.close
 end
+
+file.close
 
 threads.each do |thr|
 	thr.join
