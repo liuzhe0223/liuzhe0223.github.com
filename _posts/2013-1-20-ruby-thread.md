@@ -35,6 +35,7 @@ i = 0
 			end
 		end
 	end
+	file.close
 end
 
 threads.each do |thr|
