@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>python利用google天气api写天气预报</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">liuzhe</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>python利用google天气api写天气预报</h2>
+<p class="meta">06 Aug 2012</p>
+
+<div class="post">
+<p>昨天开始利用google的天气api写一个天气预报的小应用，现在部署在sae上，
+定时向指定的邮箱发送天气预报邮件,配合139邮箱就能使用手机接收.
+由于完成初步，参数都是写死的，也不留链接啦。</p>
+
+<p>说说期间遇到的问题：</p>
+
+<p>由于google天气返回的是xml格式的数据
+在weather后加上地址就行啦，hl=zh_cn 表示返回的xml data值为中文</p>
+
+<p>所以先找了python解析xml的模块，python有很多 ｘｍｌ的解析模块
+开始因为 xml 读取的字符编码问题 用好几个模块，每次的初始化都报错
+（xml 字符串得到的方式: xml = urllib2.urlopen(url).read())</p>
+
+<p>后来用beautifulsoup这个模块解析不报错，官方文档上说它先把数据转成utf-8的编码格式</p>
+
+<p>我刚开始也认为应该进行转码（获得的字符串是accii的），转为unicode时认为google
+返回的xml应该是utf-8的，但 xml.decode(&#39;utf-8&#39;) 一直报错，万没想到的是 ta居然是
+gb2312的，  xml.decode(&#39;gb2312&#39;).encode(&#39;urf-8&#39;)  , 解决，
+具体解析ｘｍｌ代码：
+https://github.com/liuzhe0223/code/blob/master/python/google_weather.py</p>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>gentoo,ruby error  cannot load such file -- auto_gem (LoadError), resolved</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">liuzhe</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>gentoo,ruby error  cannot load such file -- auto_gem (LoadError), resolved</h2>
+<p class="meta">07 Mar 2013</p>
+
+<div class="post">
+<ul>
+<li><p>今天gem install 的时候发现error， irb 也会 error， 仔细看error:</p>
+
+<p>/home/zhe/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/site<em>ruby/2.0.0/rubygems/core</em>ext/kernel<em>require.rb:45:in &#39;require&#39;: cannot load such file -- auto</em>gem (LoadError)
+from /home/zhe/.rvm/rubies/ruby-2.0.0-p0/lib/ruby/site<em>ruby/2.0.0/rubygems/core</em>ext/kernel_require.rb:45:in &#39;require&#39;</p></li>
+</ul>
+
+<p>解决：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">If you are having issues such as &quot;no such file to load -- auto_gem (LoadError)&quot; with gentoo, run the following to see if it corrects your issues:
+$ unset RUBYOPT;   sudo env-update
+For further information on this specific issue, please see this gist containing more details.
+</code></pre></div>
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

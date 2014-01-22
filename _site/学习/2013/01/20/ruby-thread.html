@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>ruby thread</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">liuzhe</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>ruby thread</h2>
+<p class="meta">20 Jan 2013</p>
+
+<div class="post">
+<p>除了在rails上,还没有写过ruby. 最近用多线程的东西多点, 但对多线程用的还不熟练,试着使用ruby的多线程, 看张卫抓电影天堂下载链接,我也抓一把</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="c1">#coding: utf-8</span>
+<span class="nb">require</span> <span class="s1">&#39;open-uri&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;nokogiri&#39;</span>
+
+<span class="n">file</span> <span class="o">=</span> <span class="no">File</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;test2&#39;</span><span class="p">,</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">threads</span> <span class="o">=</span> <span class="o">[]</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="mi">123</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">nu</span><span class="o">|</span>
+    <span class="nb">p</span> <span class="n">nu</span>
+    <span class="k">begin</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;http://www.dytt8.net/html/gndy/dyzz/list_23_</span><span class="si">#{</span><span class="p">(</span><span class="n">nu</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to_s</span><span class="si">}</span><span class="s2">.html&quot;</span>
+        <span class="n">html</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span>
+    <span class="k">rescue</span>
+        <span class="k">retry</span>
+    <span class="k">end</span>
+    <span class="n">html</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="sr">%r{/html/g\w*/\w*/\d*/\d*.html}</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">str</span><span class="o">|</span>
+        <span class="n">threads</span> <span class="o">&lt;&lt;</span> <span class="no">Thread</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span>
+            <span class="k">begin</span>
+                <span class="n">html2</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;http://www.dytt8.net&quot;</span> <span class="o">+</span> <span class="n">str</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">,</span><span class="s1">&#39;GBK&#39;</span><span class="p">)</span>   <span class="c1">#utf-8是目标编码, gbk是原编码</span>
+                <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">html2</span><span class="p">)</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div.title_all h1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">inner_text</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">doc</span><span class="o">.</span><span class="n">css</span><span class="p">(</span><span class="s1">&#39;div#Zoom table a&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">inner_text</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+            <span class="k">rescue</span>
+                <span class="k">retry</span>
+            <span class="k">end</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">file</span><span class="o">.</span><span class="n">close</span>
+
+<span class="n">threads</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">thr</span><span class="o">|</span>
+    <span class="n">thr</span><span class="o">.</span><span class="n">join</span>
+<span class="k">end</span>
+</code></pre></div>
+
+<p>过程中也熟悉一下ruby的一些http,解析html, 字符编码 和 正则的一些东西
+http用到 open-uri 模块, 解析html用的是nokogiri, nokogiri 查找标签用的是 和css中确定标签一样的方式字符转码开始用iconv进行字符转码,但执行时输出推荐字符串的encode方法,修改. 正则的匹配使用字符串的scan方法 可以返回多个结果, 直接match的话只有一个结果.
+因为ruby的多线程采用的是时间片的轮转并不能在多核机上提升性能, 但在抓取网页时每个http请求需要等待,这要开多线程就可以提高速度</p>
+
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

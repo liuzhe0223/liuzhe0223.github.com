@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>pymongo(2)</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">liuzhe</a></h1>
+            <a class="extra" href="/">home</a>
+          </div>
+
+          <h2>pymongo(2)</h2>
+<p class="meta">23 Mar 2013</p>
+
+<div class="post">
+<p>sort() 方法使用:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.find().sort(&quot;age&quot;, pymongo.ASCENDING)  #age的正序排列
+dbh.users.find().sort(&quot;age&quot;, pymongo.DESCENDING)  #age的逆序排列
+</code></pre></div>
+<p>或者使用：</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.find({&quot;age&quot;:{&quot;$gt&quot;: 0}}, sort=[(&quot;age&quot;, pymongo.ASENDING)])
+</code></pre></div>
+<p>使用limit()做限定:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.find().limit(20)
+</code></pre></div>
+<p>实现offset:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.find().sort(&quot;age&quot;, pymongo.DESCENDING).limit(20).slcip(20)
+</code></pre></div>
+<p>update()的使用:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.update({&quot;username&quot;: &quot;liuzhe&quot;},
+                 {&quot;$set&quot;;{&quot;age&quot;: 18}},
+                 safe=True)
+</code></pre></div>
+<p>注意使用上述方式时，如果条件匹配到多于一条的记录时，只会对搜索到的第一条记录进行修改，使用时需注意匹配条件的唯一，当要修改符合条件的多条记录时可以加上一个参数如下:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.update({&quot;username&quot;: &quot;liuzhe&quot;},
+                 {&quot;$set&quot;;{&quot;age&quot;: 18}},
+                 multi=True,
+                 safe=True)
+</code></pre></div>
+<p>删除记录:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.remove({&quot;username&quot;: &quot;liuzhe&quot;})
+</code></pre></div>
+<p>使用上述方法删除记录时，如果没有符合条件的记录不会引发异常，某个collection 中所有的记录时只需把条件设为None即可，如下:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.remove(None, safe=True)
+</code></pre></div>
+<p>对嵌入的字典进行定位时(use a dot):</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.find_one(&quot;schools.university&quot;: &quot;sdut&quot;)
+</code></pre></div>
+<p>使用mongodb时我们可能会在一个document中添加很多数据， 而mongodb对单个doucument的限制大小为最大16MB，已经很大啦</p>
+
+<p>建立索引:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.create_index(&quot;username&quot;)
+dbh.users.create_index(&quot;username&quot;, pymongo.ASCENDING)
+</code></pre></div>
+</div>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+                you@example.com
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/yourusername">github.com/yourusername</a><br />
+                <a href="https://twitter.com/yourusername">twitter.com/yourusername</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

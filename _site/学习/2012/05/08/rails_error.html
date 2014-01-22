@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>{{ page.title }}</title>
+        <title>rails生成新项目出错-ubuntu</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -17,11 +17,27 @@
 
         <div class="site">
           <div class="header">
-            <h1 class="title"><a href="/">{{ site.name }}</a></h1>
+            <h1 class="title"><a href="/">liuzhe</a></h1>
             <a class="extra" href="/">home</a>
           </div>
 
-          {{ content }}
+          <h2>rails生成新项目出错-ubuntu</h2>
+<p class="meta">08 May 2012</p>
+
+<div class="post">
+<p>rails 生成新项目时 bundle install 出错:</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">Gem files will remain installed in /home/mlzboy/.rvm/gems/ruby-1.9.3-p0/gems/sqlite3-1.3.5 for inspection.
+Results logged to /home/mlzboy/.rvm/gems/ruby-1.9.3-p0/gems/sqlite3-1.3.5/ext/sqlite3/gem_make.out
+An error occured while installing sqlite3 (1.3.5), and Bundler cannot continue.
+Make sure that `gem install sqlite3 -v &#39;1.3.5&#39;` succeeds before bundling.
+</code></pre></div>
+<p>应该是缺少需要的sqlite的库文件</p>
+<div class="highlight"><pre><code class="text language-text" data-lang="text">sudo apt-get install libsqlite3-dev
+</code></pre></div>
+<p>解决</p>
+
+</div>
+
 
           <div class="footer">
             <div class="contact">
