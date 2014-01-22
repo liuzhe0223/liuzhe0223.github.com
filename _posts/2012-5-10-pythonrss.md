@@ -12,7 +12,9 @@ category: 学习
 
 今天做的是将 抓回来的 数据存入数据库，然后用python的django框架将数据展示出来，直接拿bootsrap的一个example做首页（也只打算先做这一个页），展示的部分比较简单的做好le。剩下的就是将抓取的数据存入数据库，数据库用的sqlite3（麻雀虽小，五脏俱全），做测试方便。feedparser抓取信息，向数据库中存时遇到问题，我用for循环来存数据，涉及到sql语句中出现变量，就使用python中字符串中的变量情况来凑sql语句（insert into xxx values(xxx,'%s'....) % (a,..)),一直error，google啊，最后还是在python的官方文档中看到了正确的写法:
 
+```python
 purchases = [a,b,c,d,e] #abcde是变量
 c.executemany('INSERT INTO stocks VALUES (?,?,?,?,?)', purchases)
+```
 
 在ipython中通过循环执行sql语句，显示数据已存入数据库，但在实际文件中，并没有数据，可能是先缓存着，还没有写入真实文件，到时间啦，明天再看。。。

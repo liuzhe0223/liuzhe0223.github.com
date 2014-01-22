@@ -16,13 +16,17 @@ category: 学习
 
 所以先找了python解析xml的模块，python有很多 ｘｍｌ的解析模块
 开始因为 xml 读取的字符编码问题 用好几个模块，每次的初始化都报错
+
+```python
 （xml 字符串得到的方式: xml = urllib2.urlopen(url).read())
+```
 
 后来用beautifulsoup这个模块解析不报错，官方文档上说它先把数据转成utf-8的编码格式
 
 我刚开始也认为应该进行转码（获得的字符串是accii的），转为unicode时认为google
 返回的xml应该是utf-8的，但 xml.decode('utf-8') 一直报错，万没想到的是 ta居然是
 gb2312的，  xml.decode('gb2312').encode('urf-8')  , 解决，
+
 具体解析ｘｍｌ代码：
 https://github.com/liuzhe0223/code/blob/master/python/google_weather.py
 

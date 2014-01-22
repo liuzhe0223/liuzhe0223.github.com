@@ -14,6 +14,7 @@ rails 生成新项目时 bundle install 出错:
 
 应该是缺少需要的sqlite的库文件
 
+```sh
 	sudo apt-get install libsqlite3-dev
-
+```
 解决

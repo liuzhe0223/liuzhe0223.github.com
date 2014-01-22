@@ -18,6 +18,7 @@ category: 学习
 
 * 安装基本系统一定要注意各分区在/mnt下的挂载, pacstrap 安装完基本系统后 chroot到 /mnt下目的系统时,就是需要修改一些配置文件(除了下面其他的没有修改,应为不太懂), 我修改了:
 
+```
     locale.conf
 
     	LANG="en_US.UTF-8"
@@ -29,7 +30,7 @@ category: 学习
     设定时区:
     
     	ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-    
+
     mkinitcpio -p linux  生成内核镜像
     wiki中前几步中已经把 grub 安装到系统里了, 配置完以上以后, 就要配置grub了, 首先将grub的引导
     安装到硬盘, 然后生成 grub.cfg
@@ -39,12 +40,17 @@ category: 学习
 
     exit 退出目的系统, unmount 后 重启
     
+``` 
+
 * 接下来要配置x 先执行 [archwiki](https://wiki.archlinux.org/index.php/Beginners%27_Guide) 上的几步,测试完x 之后安装桌面环境, 我这几天一直在用kde 所以来个kde, 我先安装了 kdebase一路默认安完然后又安装 dbus, 接着应该用 systemctl enbale dus   让他开机启动, 但报错啦, 有人说使用systemd就默认开启啦, 后来正式确实是, 我的命令如下, 开始前先对 mirrlist 修改, 我将163的放在最前面,然后执行 dhcpd 获取ip:
 
-	    pacman -S  kdebase
+
+```
+   		pacman -S  kdebase
    		pacman -S  kde-l10n-zh_cn
     	pacman -S  wqy-zenhei
     	systemctl enable kdm
+```
 
 * 接下来添加一个的用户, 重启就能进kde啦
 * 装完系统后就来配置我的开发环境, ruby on rails, 当然是 [ruby-chian-wiki](http://ruby-china.org/wiki/install_ruby_guide)所不同的是 依赖包,  先不用装 ,先装好rvm ,然后  rvm requirement  查看提示安装依赖包. 安装 mysql后配置root密码,使用命令: 

@@ -12,8 +12,8 @@ category: 学习
 
 {% highlight python %}
 
-    os.getpid()
-    
+os.getpid()
+
 {% endhighlight %}
 
 进程皆有父
@@ -21,7 +21,7 @@ category: 学习
 
 {% highlight python %}
 
-    os.getppid()
+os.getppid()
 
 {% endhighlight %}
 
@@ -30,8 +30,8 @@ category: 学习
 
 {% highlight python %}
 
-    file = open('test', 'r')
-    print file.fileno()
+file = open('test', 'r')
+print file.fileno()
 
 {% endhighlight %}
 
@@ -40,12 +40,12 @@ category: 学习
 
 {% highlight python %}
 
-    sys.stdin.fileno()
-    => 0
-    sys.stdout.fileno()
-    => 1
-    sys.stderr.fileno()
-    => 2
+sys.stdin.fileno()
+=> 0
+sys.stdout.fileno()
+=> 1
+sys.stderr.fileno()
+=> 2
     
 {% endhighlight %}
 
@@ -54,18 +54,18 @@ category: 学习
 
 {% highlight python %}
 
-    resource.getrlimit(resource.RLIMIT_NOFILE)
-    => (1024, 4096)  #这是我机器的返回
-   
+resource.getrlimit(resource.RLIMIT_NOFILE)
+=> (1024, 4096)  #这是我机器的返回
+
 {% endhighlight %}
 
 返回为一个元组，第一个返回值为软限制，第二个返回值为硬限制。软限制其实不算限制，超过软限制程序会抛出异常，进程可以修改软限制，但硬限制只有在进程有足够的权限时才能修改。我们来试着修改一下限制,修改为的两个参数尽量不要超过原来硬限制的值（当前硬限制的值), 也就是说如果修改后已修改后的为准：
 
 {% highlight python %}
 
-    resource.setrlimit(resource.RLIMIT_NOFILE,(4000,4096))
-    resource.getrlimit(resource.RLIMIT_NOFILE)
-    => (4000,4096)
+resource.setrlimit(resource.RLIMIT_NOFILE,(4000,4096))
+resource.getrlimit(resource.RLIMIT_NOFILE)
+=> (4000,4096)
     
 {% endhighlight %}
 
@@ -79,11 +79,11 @@ category: 学习
 
 {% highlight python %}
 
-    os.environ.get('PATH')
-    =>
-    '/home/vagrant/.rvm/gems/ruby-2.0.0-p247/bin:/home/vagrant/.rvm/gems/ruby-2.0.0-p247@global
-    /bin:/home/vagrant/.rvm/rubies/ruby-2.0.0-p247/bin:/home/vagrant/.rvm/bin:/usr/local/sbin:/
-    usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/vagrant_ruby/bin'
+os.environ.get('PATH')
+=>
+'/home/vagrant/.rvm/gems/ruby-2.0.0-p247/bin:/home/vagrant/.rvm/gems/ruby-2.0.0-p247@global
+/bin:/home/vagrant/.rvm/rubies/ruby-2.0.0-p247/bin:/home/vagrant/.rvm/bin:/usr/local/sbin:/
+usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/opt/vagrant_ruby/bin'
 
 {% endhighlight %}
 
@@ -93,10 +93,11 @@ category: 学习
 
 进程可以访问 sys.argv 的数组来获得命令行传进来的参数
 
-    import sys
-
-    print(sys.argv[0])
-    print(sys.argv[1])
+```python
+import sys
+print(sys.argv[0])
+print(sys.argv[1])
+```
 
 编写命令行程序的话可以用optparse 
 http://docs.python.org/2/library/optparse.html
