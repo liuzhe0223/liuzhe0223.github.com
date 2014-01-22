@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>First blog</title>
+        <title>读编程珠玑</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -22,11 +22,22 @@
             <a class="extra" href="/note.html">note</a>
           </div>
 
-          <h2>First blog</h2>
-<p class="meta">26 Feb 2012</p>
+          <h2>读编程珠玑</h2>
+<p class="meta">10 Aug 2012</p>
 
 <div class="post">
-<p>弄完blog,发一个 。</p>
+<p>编程珠玑读书：</p>
+
+<p>第一章，这一章介绍了一个我从来没接触过的一个数据排序时的技巧
+是由固定小内存下硬盘数据排序索引出的,使用位图排序，在相对理想
+的数据下，即数据不重复，最好是相对集中一点时，当数据为整数最
+大值小于n时，可以用内存中连续的n位做中介尽行排序，就是，现将
+连续的内存空间置零，当遇到从硬盘取出数据时，将对应位置为1,数
+据读完后在一并读出，这样细算一下就省了和多内存，书上说这叫位
+图排序。
+从这个基本的技巧出发当数据的规模和离散程度发生变化时就可以根
+据实际情况对算法的细节进行改变，比如数据会有重复时可以再加几
+位作为计数位等等，以前从来没有这样想过，还是有书读好。</p>
 
 </div>
 

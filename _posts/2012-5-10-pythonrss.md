@@ -2,7 +2,7 @@
 layout: post
 title: python抓取rss
 tags: python,django
-category: 学习
+category: note
 ---
 
 

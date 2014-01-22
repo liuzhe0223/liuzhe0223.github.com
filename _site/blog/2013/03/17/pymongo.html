@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>pymongo的使用</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">liuzhe</a></h1>
+            <a class='extra' href="/">blog</a>
+            <a class="extra" href="/note.html">note</a>
+          </div>
+
+          <h2>pymongo的使用</h2>
+<p class="meta">17 Mar 2013</p>
+
+<div class="post">
+<p>mogodb是现在比较流行的非关系型数据库(不仅仅是关系型数据库), 是基于键值对的存储, 并有效的利用的内存来加快检索效率,  pymongo是python的mongodb 驱动, 今天看了一下 MongoDB and Python 这本书, 学习一下. 总体来看用pymogo 来实现对 mongodb的操作是还是比较顺手的, 像我们拿orm来操作关系型数据库, 说的只是面向对象的操作, orm的 数据对象和数据关系的映射功能, 当我们用mongodb的时候还要去实现的 不管是使用一些模块(mongoengine)还是自己实现, 毕竟我们不能在大量的代码里去找我们定义的数据模型, 放在单独的model 里才能更清晰. 不过当我们写一些小东西的时候, 直接用pymongo, 比我们用关系型数据库时写sql舒服哆啦.</p>
+
+<p>下面来些笔记以备速查
+连接:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">pymongo.errors</span> <span class="kn">import</span> <span class="n">ConnectionFailure</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="sd">&quot;&quot;&quot; Connect to MongoDB &quot;&quot;&quot;</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">conn</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">27017</span><span class="p">)</span>
+    <span class="k">print</span> <span class="s">&quot;Connected successfully&quot;</span>
+<span class="k">except</span> <span class="n">ConnectionFailure</span><span class="p">,</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&quot;Could not connect to MongoDB: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">e</span><span class="p">)</span>
+</code></pre></div>
+<p>在数据库链接成功的情况下,获取一个数据库操作对象:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span> <span class="o">=</span> <span class="n">conn</span><span class="p">[</span><span class="s">&quot;mydb&quot;</span><span class="p">]</span>
+</code></pre></div>
+<p>这样即使mongodb中不存在名为mydb的数据库也不会抛出异常, 而且当你向其中存入数据时,数库会自动建一个名为mydb的数据库并将数据写入, 这样看来我们就不用专门的程序来初始化数据库啦, collection 的建立也是使用这样的方式, 像以下方式向 mydb中名为 users 的collection中插入数据:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">user</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;username&quot;</span> <span class="p">:</span> <span class="s">&quot;liuzhe&quot;</span><span class="p">,</span>
+    <span class="s">&quot;tel&quot;</span> <span class="p">:</span> <span class="s">&quot;1234&quot;</span><span class="p">,</span>
+    <span class="s">&quot;age&quot;</span> <span class="p">:</span> <span class="mi">22</span><span class="p">,</span>
+    <span class="s">&quot;schools&quot;</span> <span class="p">:{</span>
+        <span class="s">&quot;highschool&quot;</span> <span class="p">:</span> <span class="s">&quot;No.1 middle school of Heze&quot;</span><span class="p">,</span>
+        <span class="s">&quot;university&quot;</span> <span class="p">:</span> <span class="s">&quot;sdut&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>   
+
+<span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+</code></pre></div>
+<p>mongodb中的查询, 当有些属性在数据中不重复时:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;username&quot;</span> <span class="p">:</span> <span class="s">&quot;liuzhe&quot;</span><span class="p">})</span>
+</code></pre></div>
+<p>find_one 在找不到符合条件的记录时返回None, 当要检索符合某一条件的多条记录时:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s">&quot;age&quot;</span> <span class="p">:</span> <span class="mi">22</span><span class="p">})</span>
+<span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s">&quot;age&quot;</span><span class="p">:{</span><span class="s">&quot;$gt&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">}})</span>
+</code></pre></div>
+<p>上面使用 $gt 的意思是找到age比0大的记录, 类似的操作符还有
+<img src="http://i.imgur.com/DNEIT1s.png" /></p>
+
+<p>sort() 方法使用:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">ASCENDING</span><span class="p">)</span>  <span class="c">#age的正序排列</span>
+<span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">DESCENDING</span><span class="p">)</span>  <span class="c">#age的逆序排列</span>
+</code></pre></div>
+<p>或者使用：</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find</span><span class="p">({</span><span class="s">&quot;age&quot;</span><span class="p">:{</span><span class="s">&quot;$gt&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}},</span> <span class="n">sort</span><span class="o">=</span><span class="p">[(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">ASENDING</span><span class="p">)])</span>
+</code></pre></div>
+<p>使用limit()做限定:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find</span><span class="p">()</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+<p>实现offset:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find</span><span class="p">()</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="s">&quot;age&quot;</span><span class="p">,</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">DESCENDING</span><span class="p">)</span><span class="o">.</span><span class="n">limit</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">slcip</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
+<p>update()的使用:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;liuzhe&quot;</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s">&quot;$set&quot;</span><span class="p">;{</span><span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}},</span>
+                 <span class="n">safe</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div>
+<p>注意使用上述方式时，如果条件匹配到多于一条的记录时，只会对搜索到的第一条记录进行修改，使用时需注意匹配条件的唯一，当要修改符合条件的多条记录时可以加上一个参数如下:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;liuzhe&quot;</span><span class="p">},</span>
+                 <span class="p">{</span><span class="s">&quot;$set&quot;</span><span class="p">;{</span><span class="s">&quot;age&quot;</span><span class="p">:</span> <span class="mi">18</span><span class="p">}},</span>
+                 <span class="n">multi</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                 <span class="n">safe</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div>
+<p>删除记录:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">remove</span><span class="p">({</span><span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;liuzhe&quot;</span><span class="p">})</span>
+</code></pre></div>
+<p>使用上述方法删除记录时，如果没有符合条件的记录不会引发异常，某个collection 中所有的记录时只需把条件设为None即可，如下:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div>
+<p>对嵌入的字典进行定位时(use a dot):</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">find_one</span><span class="p">(</span><span class="s">&quot;schools.university&quot;</span><span class="p">:</span> <span class="s">&quot;sdut&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>使用mongodb时我们可能会在一个document中添加很多数据， 而mongodb对单个doucument的限制大小为最大16MB，已经很大啦</p>
+
+<p>建立索引:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">dbh</span><span class="o">.</span><span class="n">users</span><span class="o">.</span><span class="n">create_index</span><span class="p">(</span><span class="s">&quot;username&quot;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre><code class="text language-text" data-lang="text">dbh.users.create_index(&quot;username&quot;, pymongo.ASCENDING)
+</code></pre></div>
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'liuzhe0223'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+               liuzhe 
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/liuzhe0223">github.com/liuzhe0223</a><br />
+                <a href="https://twitter.com/liuzhe0223">twitter.com/liuzhe0223</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>

@@ -2,7 +2,7 @@
 layout: post
 title: rails生成新项目出错-ubuntu 
 tags: rails,ubuntu
-category: 学习
+category: note
 ---
 
 rails 生成新项目时 bundle install 出错:

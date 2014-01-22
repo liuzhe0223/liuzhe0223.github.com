@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 读编程珠玑1
+title: 读编程珠玑
 tags: [编程珠玑,读书]
-category: 学习
+category: blog
 ---
 
 编程珠玑读书：

@@ -2,7 +2,7 @@
 layout: post
 title: gentoo,ruby error  cannot load such file -- auto_gem (LoadError), resolved
 tags: linux
-category: 学习
+category: note 
 ---
 
 * 今天gem install 的时候发现error， irb 也会 error， 仔细看error:

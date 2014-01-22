@@ -1,8 +1,8 @@
 ---
 layout: post
-title: python_socket_server
+title: python网络编程之socket 
 tags: python
-category: 学习
+category: blog
 ---
 
 做java课程设计, 做的IM, 现在回来看一下python的网络编程相关的部分先写了个基本的socket通信

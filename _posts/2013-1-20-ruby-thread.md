@@ -1,8 +1,8 @@
 ---
 layout: post
-title: ruby thread
+title: 由thread出发来看ruby的一些并发
 tags: ruby 
-category: 学习
+category: blog
 
 ---
 除了在rails上,还没有写过ruby. 最近用多线程的东西多点, 但对多线程用的还不熟练,试着使用ruby的多线程, 看张卫抓电影天堂下载链接,我也抓一把

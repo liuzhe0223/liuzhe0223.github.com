@@ -1,7 +1,6 @@
 ---
 layout: post
 title: First blog
-tags: [闲]
 category: 闲
 ---
 

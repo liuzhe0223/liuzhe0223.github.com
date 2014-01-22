@@ -1,8 +1,8 @@
 ---
 layout: post
-title: python利用google天气api写天气预报
+title: python使用google天气api
 tags: [python]
-category: 学习
+category: blog
 ---
 
 昨天开始利用google的天气api写一个天气预报的小应用，现在部署在sae上，

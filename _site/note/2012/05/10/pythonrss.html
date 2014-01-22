@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>python抓取rss</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="site">
+          <div class="header">
+            <h1 class="title"><a href="/">liuzhe</a></h1>
+            <a class='extra' href="/">blog</a>
+            <a class="extra" href="/note.html">note</a>
+          </div>
+
+          <h2>python抓取rss</h2>
+<p class="meta">10 May 2012</p>
+
+<div class="post">
+<p>马伟伟同学说过想做一个rss的采集，这几天找出时间，看feedparser这个rss的抓取模块</p>
+
+<p>前几天了解feedparser抓回来的字典树，树比较大，先做个简单的，title，link，简短的content，和时间，分别用到  字典树中的，entries[i].title,entries[i].link,entries[i].summary,entries[i].published。</p>
+
+<p>今天做的是将 抓回来的 数据存入数据库，然后用python的django框架将数据展示出来，直接拿bootsrap的一个example做首页（也只打算先做这一个页），展示的部分比较简单的做好le。剩下的就是将抓取的数据存入数据库，数据库用的sqlite3（麻雀虽小，五脏俱全），做测试方便。feedparser抓取信息，向数据库中存时遇到问题，我用for循环来存数据，涉及到sql语句中出现变量，就使用python中字符串中的变量情况来凑sql语句（insert into xxx values(xxx,&#39;%s&#39;....) % (a,..)),一直error，google啊，最后还是在python的官方文档中看到了正确的写法:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="n">purchases</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">e</span><span class="p">]</span> <span class="c">#abcde是变量</span>
+<span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s">&#39;INSERT INTO stocks VALUES (?,?,?,?,?)&#39;</span><span class="p">,</span> <span class="n">purchases</span><span class="p">)</span>
+</code></pre></div>
+<p>在ipython中通过循环执行sql语句，显示数据已存入数据库，但在实际文件中，并没有数据，可能是先缓存着，还没有写入真实文件，到时间啦，明天再看。。。</p>
+
+</div>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'liuzhe0223'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+          <div class="footer">
+            <div class="contact">
+              <p>
+                Your Name<br />
+                What You Are<br />
+               liuzhe 
+              </p>
+            </div>
+            <div class="contact">
+              <p>
+                <a href="https://github.com/liuzhe0223">github.com/liuzhe0223</a><br />
+                <a href="https://twitter.com/liuzhe0223">twitter.com/liuzhe0223</a><br />
+              </p>
+            </div>
+          </div>
+        </div>
+
+    </body>
+</html>
