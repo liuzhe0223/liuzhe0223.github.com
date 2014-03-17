@@ -27,18 +27,14 @@
 
 <div class="post">
 <p>rails 生成新项目时 bundle install 出错:</p>
-
 <div class="highlight"><pre><code class="text language-text" data-lang="text">Gem files will remain installed in /home/mlzboy/.rvm/gems/ruby-1.9.3-p0/gems/sqlite3-1.3.5 for inspection.
 Results logged to /home/mlzboy/.rvm/gems/ruby-1.9.3-p0/gems/sqlite3-1.3.5/ext/sqlite3/gem_make.out
 An error occured while installing sqlite3 (1.3.5), and Bundler cannot continue.
 Make sure that `gem install sqlite3 -v &#39;1.3.5&#39;` succeeds before bundling.
 </code></pre></div>
-
 <p>应该是缺少需要的sqlite的库文件</p>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh">    sudo apt-get install libsqlite3-dev
 </code></pre></div>
-
 <p>解决</p>
 
 </div>

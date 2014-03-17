@@ -39,60 +39,46 @@
 </ul>
 
 <p>locale.conf</p>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh"><span class="nv">LANG</span><span class="o">=</span><span class="s2">&quot;en_US.UTF-8&quot;</span>
 </code></pre></div>
-
 <p>locale.gen  将其中 zh<em>cn 开头的行解注释 , 还有 en</em>US.UTF-8 解注释, 是本地支持所选的字符集好要执行命令:</p>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh">locale-gen
 </code></pre></div>
-
 <p>设定时区:</p>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh">ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 </code></pre></div>
-
 <p>mkinitcpio -p linux  生成内核镜像
 wiki中前几步中已经把 grub 安装到系统里了, 配置完以上以后, 就要配置grub了, 首先将grub的引导
 安装到硬盘, 然后生成 grub.cfg</p>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh">grub-install   /dev/sda
 grub-makconfig  &gt; /boot/grub/grub.cfg
 </code></pre></div>
-
 <p>exit 退出目的系统, unmount 后 重启</p>
 
 <ul>
 <li>接下来要配置x 先执行 <a href="https://wiki.archlinux.org/index.php/Beginners%27_Guide">archwiki</a> 上的几步,测试完x 之后安装桌面环境, 我这几天一直在用kde 所以来个kde, 我先安装了 kdebase一路默认安完然后又安装 dbus, 接着应该用 systemctl enbale dus   让他开机启动, 但报错啦, 有人说使用systemd就默认开启啦, 后来正式确实是, 我的命令如下, 开始前先对 mirrlist 修改, 我将163的放在最前面,然后执行 dhcpd 获取ip:</li>
 </ul>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh">pacman -S  kdebase
 pacman -S  kde-l10n-zh_cn
 pacman -S  wqy-zenhei
 systemctl <span class="nb">enable </span>kdm
 </code></pre></div>
-
 <ul>
 <li>接下来添加一个的用户, 重启就能进kde啦</li>
 <li>装完系统后就来配置我的开发环境, ruby on rails, 当然是 <a href="http://ruby-china.org/wiki/install_ruby_guide">ruby-chian-wiki</a>所不同的是 依赖包,  先不用装 ,先装好rvm ,然后  rvm requirement  查看提示安装依赖包. 安装 mysql后配置root密码,使用命令: </li>
 </ul>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh">mysql-secure-installation .
 </code></pre></div>
-
 <ul>
 <li>zsh 和 oh-my-zsh 的主题  <a href="https://github.com/robbyrussell/oh-my-zsh">参考</a> github上的安装指南</li>
 <li>vim 并安装vundle <a href="https://github.com/gmarik/vundle">参考</a></li>
 <li>播放器 mplayer 还有 音乐播放器cmus , 我的第二编辑器 sublime(这个要先安装yaourt <a href="https://wiki.archlinux.org/index.php/Yaourt">参考</a>)gtalk  kde下用 kdenetwork-kopete, 还有新发现的一个好用的终端模拟器  yakuake, chromium 浏览器</li>
 <li>中文输入 fcitx 并  yaourt 了 googlepinyin 输入法 ,fcitx需要简单配置, 编辑 ~/.xprofile 添加:</li>
 </ul>
-
 <div class="highlight"><pre><code class="sh language-sh" data-lang="sh"><span class="nb">export </span><span class="nv">XMODIFIERS</span><span class="o">=</span>@im<span class="o">=</span>fcitx
 <span class="nb">export </span><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
 <span class="nb">export </span><span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
 </code></pre></div>
-
 <ul>
 <li>还有就是装完后状态栏没有声音选项, 然后又装了  kde-multimedia.现在就是这些</li>
 </ul>

@@ -37,10 +37,8 @@
 
 <p>所以先找了python解析xml的模块，python有很多 ｘｍｌ的解析模块
 开始因为 xml 读取的字符编码问题 用好几个模块，每次的初始化都报错</p>
-
 <div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="err">（</span><span class="n">xml</span> <span class="err">字符串得到的方式</span><span class="p">:</span> <span class="n">xml</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
 </code></pre></div>
-
 <p>后来用beautifulsoup这个模块解析不报错，官方文档上说它先把数据转成utf-8的编码格式</p>
 
 <p>我刚开始也认为应该进行转码（获得的字符串是accii的），转为unicode时认为google
