@@ -90,7 +90,8 @@ def process_response(self, request, response):
 -------
 
 路由基本是类似下边：
-```
+
+```python
 (r'^parents/(?P<parent_id>\d+)/chrilren/$', childView),               
 (r'^chrildren/(?P<child_id>\d+)/$', childView),
 ```

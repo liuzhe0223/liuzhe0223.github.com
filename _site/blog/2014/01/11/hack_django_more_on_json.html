@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>使django更适用于json</title>
+        <title>django更适用于json</title>
         <meta name="viewport" content="width=device-width">
 
         <!-- syntax highlighting CSS -->
@@ -22,7 +22,7 @@
             <a class="extra" href="/note.html">note</a>
           </div>
 
-          <h2>使django更适用于json</h2>
+          <h2>django更适用于json</h2>
 <p class="meta">11 Jan 2014</p>
 
 <div class="post">
@@ -92,6 +92,12 @@
         <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
 <h2>路由</h2>
+
+<p>路由基本是类似下边：</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="p">(</span><span class="s">r&#39;^parents/(?P&lt;parent_id&gt;\d+)/chrilren/$&#39;</span><span class="p">,</span> <span class="n">childView</span><span class="p">),</span>               
+<span class="p">(</span><span class="s">r&#39;^chrildren/(?P&lt;child_id&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="n">childView</span><span class="p">),</span>
+</code></pre></div>
+<p>view 使用的普通function view, 具体操作使用的是对request.method(get, post, put, delete) 和一些参数的一块判断为何种操作进而进行操作。</p>
 
 </div>
 
