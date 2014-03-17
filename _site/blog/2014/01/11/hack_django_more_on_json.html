@@ -34,9 +34,64 @@
 
 <h1>开始添加简单代码更好的使用django</h1>
 
-<p>现在需要实现的是使用django作为json输出单页应用的后端，仅这几天看文档没有发现django中有对此的比较方便的实现。扫了眼一个扩展，django-restful，对扫了眼，在功能上可能实现的不错但怎么看文档都不合眼，所以没有深入去看。现在开始试着添加少部分的代码就能使得django对json输入输出更友好些。其实这些尝试前段时间就开始啦，尽量使用middleware来完成一些需要的特性，这样可以不用在view里多些一些代码啦，开了个库https://github.com/liuzhe0223/addons-to-django,开始慢慢完善吧。</p>
+<h2>需求</h2>
 
-<p>未完。。</p>
+<p>现在需要实现的是使用django作为json输出单页应用的后端，仅这几天看文档没有发现django中有对此的比较方便的实现。扫了眼一个扩展，django-restful，对扫了眼，开始没大仔细看，现在看着还行。不过这次没有去用，看看使用我的原始方法写写我认为的rest api。</p>
+
+<h2>处理request的json数据</h2>
+
+<p>这个json数据也就是当使用json上传时的<code>request.body</code>里的内容, 要达到的目的是要在view中能够方便的使用<code>request.data</code>这样的方式使用上传的数据。</p>
+
+<p>开始的想法是同时处理json请求和普通的formdata请求,所以开始直接把两种数据都放到request.POST中,所以写了一个中间件他，添加<code>process_view</code> 方法：</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="k">def</span> <span class="nf">process_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view_func</span><span class="p">,</span> <span class="n">view_args</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">):</span>
+    <span class="n">is_json</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="s">&quot;CONTENT_TYPE&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span> <span class="ow">and</span> \
+            <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s">&#39;CONTENT_TYPE&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;application/json&#39;</span><span class="p">:</span>
+        <span class="n">is_json</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">if</span> <span class="n">is_json</span><span class="p">:</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">POST</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>  <span class="c">#request.POST 为django中的有序字典实现，初始换中后request.POST只读</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">request</span><span class="o">.</span><span class="n">POST</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+
+    <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div>
+<p>后来认为使用request.POST 在后来的处理put方法给的数据时这个名字应该不太合适, 而且html的标点提交没有put方法。最后就直接只去处理json数据:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="k">def</span> <span class="nf">process_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view_func</span><span class="p">,</span> <span class="n">view_args</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">):</span>
+
+    <span class="n">has_json_data</span> <span class="o">=</span> <span class="s">&#39;CONTENT_TYPE&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span> <span class="ow">and</span> \
+        <span class="n">request</span><span class="o">.</span><span class="n">META</span><span class="p">[</span><span class="s">&#39;CONTENT_TYPE&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s">&#39;application/json&#39;</span>
+
+    <span class="k">if</span> <span class="n">has_json_data</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">data_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span>
+                <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+                    <span class="s">&#39;code&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s">&#39;errors&#39;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s">&#39;json&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s">&#39;json format error&#39;</span><span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">}),</span>
+                <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;application/json&quot;</span>
+            <span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_dict</span>
+
+    <span class="k">return</span> <span class="bp">None</span>
+</code></pre></div>
+<p>这样就只处理json数据并把数据存入<code>request.data</code>中</p>
+
+<h2>返回数据</h2>
+
+<p>为了在view中少些写json.dumps, 就改为view function中只返回dict的数据在中间件中dump:</p>
+<div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">),</span>
+                            <span class="n">content_type</span><span class="o">=</span><span class="s">&quot;application/json&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">response</span>
+</code></pre></div>
+<h2>路由</h2>
 
 </div>
 
