@@ -43,6 +43,7 @@
 <p>这个json数据也就是当使用json上传时的<code>request.body</code>里的内容, 要达到的目的是要在view中能够方便的使用<code>request.data</code>这样的方式使用上传的数据。</p>
 
 <p>开始的想法是同时处理json请求和普通的formdata请求,所以开始直接把两种数据都放到request.POST中,所以写了一个中间件他，添加<code>process_view</code> 方法：</p>
+
 <div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="k">def</span> <span class="nf">process_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view_func</span><span class="p">,</span> <span class="n">view_args</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">):</span>
     <span class="n">is_json</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">if</span> <span class="s">&quot;CONTENT_TYPE&quot;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span> <span class="ow">and</span> \
@@ -56,7 +57,9 @@
 
     <span class="k">return</span> <span class="bp">None</span>
 </code></pre></div>
+
 <p>后来认为使用request.POST 在后来的处理put方法给的数据时这个名字应该不太合适, 而且html的标点提交没有put方法。最后就直接只去处理json数据:</p>
+
 <div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="k">def</span> <span class="nf">process_view</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">view_func</span><span class="p">,</span> <span class="n">view_args</span><span class="p">,</span> <span class="n">view_kwargs</span><span class="p">):</span>
 
     <span class="n">has_json_data</span> <span class="o">=</span> <span class="s">&#39;CONTENT_TYPE&#39;</span> <span class="ow">in</span> <span class="n">request</span><span class="o">.</span><span class="n">META</span> <span class="ow">and</span> \
@@ -79,11 +82,13 @@
 
     <span class="k">return</span> <span class="bp">None</span>
 </code></pre></div>
+
 <p>这样就只处理json数据并把数据存入<code>request.data</code>中</p>
 
 <h2>返回数据</h2>
 
 <p>为了在view中少些写json.dumps, 就改为view function中只返回dict的数据在中间件中dump:</p>
+
 <div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="k">def</span> <span class="nf">process_response</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="p">),</span>
@@ -91,12 +96,15 @@
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">response</span>
 </code></pre></div>
+
 <h2>路由</h2>
 
 <p>路由基本是类似下边：</p>
+
 <div class="highlight"><pre><code class="python language-python" data-lang="python"><span class="p">(</span><span class="s">r&#39;^parents/(?P&lt;parent_id&gt;\d+)/chrilren/$&#39;</span><span class="p">,</span> <span class="n">childView</span><span class="p">),</span>               
 <span class="p">(</span><span class="s">r&#39;^chrildren/(?P&lt;child_id&gt;\d+)/$&#39;</span><span class="p">,</span> <span class="n">childView</span><span class="p">),</span>
 </code></pre></div>
+
 <p>view 使用的普通function view, 具体操作使用的是对request.method(get, post, put, delete) 和一些参数的一块判断为何种操作进而进行操作。</p>
 
 </div>

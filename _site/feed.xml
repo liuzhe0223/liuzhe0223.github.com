@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>liuzhe</title>
+    <link>http://liuzhe.tk</link>
+    <description>RSS feed for liuzhe</description>
+    <pubDate>Sat, 11 Jan 2014 00:00:00 +0800</pubDate>
+    <item>
+      <title>django更适用于json</title>
+      <link>http://liuzhe.tk/blog/2014/01/11/hack_django_more_on_json.html</link>
+      <description>&lt;h1&gt;django不合口&lt;/h1&gt;
+</description>
+      <pubDate>Sat, 11 Jan 2014 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2014/01/11/hack_django_more_on_json.html</guid>
+      <dc:date>2014-01-11T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>理解unix进程python</title>
+      <link>http://liuzhe.tk/blog/2013/06/25/unix_process_python.html</link>
+      <description>&lt;h2&gt;进程皆有标识&lt;/h2&gt;
+</description>
+      <pubDate>Tue, 25 Jun 2013 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2013/06/25/unix_process_python.html</guid>
+      <dc:date>2013-06-25T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>pymongo的使用</title>
+      <link>http://liuzhe.tk/blog/2013/03/17/pymongo.html</link>
+      <description>&lt;p&gt;mogodb是现在比较流行的非关系型数据库(不仅仅是关系型数据库), 是基于键值对的存储, 并有效的利用的内存来加快检索效率,  pymongo是python的mongodb 驱动, 今天看了一下 MongoDB and Python 这本书, 学习一下. 总体来看用pymogo 来实现对 mongodb的操作是还是比较顺手的, 像我们拿orm来操作关系型数据库, 说的只是面向对象的操作, orm的 数据对象和数据关系的映射功能, 当我们用mongodb的时候还要去实现的 不管是使用一些模块(mongoengine)还是自己实现, 毕竟我们不能在大量的代码里去找我们定义的数据模型, 放在单独的model 里才能更清晰. 不过当我们写一些小东西的时候, 直接用pymongo, 比我们用关系型数据库时写sql舒服哆啦.&lt;/p&gt;
+</description>
+      <pubDate>Sun, 17 Mar 2013 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2013/03/17/pymongo.html</guid>
+      <dc:date>2013-03-17T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>gentoo,ruby error  cannot load such file -- auto_gem (LoadError), resolved</title>
+      <link>http://liuzhe.tk/note/2013/03/07/gentoo_ruby_error.html</link>
+      <description>&lt;ul&gt;
+&lt;li&gt;今天gem install 的时候发现error， irb 也会 error， 仔细看error:&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      <pubDate>Thu, 07 Mar 2013 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/note/2013/03/07/gentoo_ruby_error.html</guid>
+      <dc:date>2013-03-07T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>由thread出发来看ruby的一些并发</title>
+      <link>http://liuzhe.tk/blog/2013/01/20/ruby-thread.html</link>
+      <description>&lt;p&gt;除了在rails上,还没有写过ruby. 最近用多线程的东西多点, 但对多线程用的还不熟练,试着使用ruby的多线程, 看张卫抓电影天堂下载链接,我也抓一把&lt;/p&gt;
+</description>
+      <pubDate>Sun, 20 Jan 2013 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2013/01/20/ruby-thread.html</guid>
+      <dc:date>2013-01-20T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>python网络编程之socket</title>
+      <link>http://liuzhe.tk/blog/2013/01/18/python_socket_server.html</link>
+      <description>&lt;p&gt;做java课程设计, 做的IM, 现在回来看一下python的网络编程相关的部分先写了个基本的socket通信&lt;/p&gt;
+</description>
+      <pubDate>Fri, 18 Jan 2013 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2013/01/18/python_socket_server.html</guid>
+      <dc:date>2013-01-18T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>新arch安装小计</title>
+      <link>http://liuzhe.tk/note/2012/11/09/my_new_arch_installtion.html</link>
+      <description>&lt;p&gt;不用arch已经有一段时间啦，看完孙同学的帖子，又勾起了我的。。
+小记一下这次安装,主要是遇到的问题&lt;/p&gt;
+</description>
+      <pubDate>Fri, 09 Nov 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/note/2012/11/09/my_new_arch_installtion.html</guid>
+      <dc:date>2012-11-09T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>新版arch，碉堡啦</title>
+      <link>http://liuzhe.tk/note/2012/09/13/the_new_arch.html</link>
+      <description>&lt;p&gt;看了孙建希同学的&lt;a href=&quot;http://jianxi.info/blog/2012/09/13/arch-install/&quot;&gt;arch-install&lt;/a&gt;  不禁的手痒想,想再装一下新的arch，怀念arch，用虽然不是我用第一个linux的发行版，却是我用的目前为止时间最长的一个发行版，有空试试&lt;/p&gt;
+</description>
+      <pubDate>Thu, 13 Sep 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/note/2012/09/13/the_new_arch.html</guid>
+      <dc:date>2012-09-13T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>在服务器上搭个vpn来蹭校园网</title>
+      <link>http://liuzhe.tk/blog/2012/09/12/vpn.html</link>
+      <description>&lt;p&gt;最近我们发现校园网内宿舍区可以ping通办公区的ip(在校园网没有认真的情况下），于是我们萌发的代理上网的念头（屌丝穷能省点网费就省点吧），开始当然就是使用常用的ssh，但是这种方法在全局代理上不好设置（我是没弄好），而且速度有点慢，放弃。&lt;/p&gt;
+</description>
+      <pubDate>Wed, 12 Sep 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2012/09/12/vpn.html</guid>
+      <dc:date>2012-09-12T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>读编程珠玑</title>
+      <link>http://liuzhe.tk/blog/2012/08/10/programming_pearls1.html</link>
+      <description>&lt;p&gt;编程珠玑读书：&lt;/p&gt;
+</description>
+      <pubDate>Fri, 10 Aug 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2012/08/10/programming_pearls1.html</guid>
+      <dc:date>2012-08-10T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>python使用google天气api</title>
+      <link>http://liuzhe.tk/blog/2012/08/06/python_weather.html</link>
+      <description>&lt;p&gt;昨天开始利用google的天气api写一个天气预报的小应用，现在部署在sae上，
+定时向指定的邮箱发送天气预报邮件,配合139邮箱就能使用手机接收.
+由于完成初步，参数都是写死的，也不留链接啦。&lt;/p&gt;
+</description>
+      <pubDate>Mon, 06 Aug 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/blog/2012/08/06/python_weather.html</guid>
+      <dc:date>2012-08-06T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>pythonrss2</title>
+      <link>http://liuzhe.tk/note/2012/05/13/pythonrss2.html</link>
+      <description>&lt;p&gt;这两天去做acm省赛的志愿者，没有blog&lt;/p&gt;
+</description>
+      <pubDate>Sun, 13 May 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/note/2012/05/13/pythonrss2.html</guid>
+      <dc:date>2012-05-13T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>python抓取rss</title>
+      <link>http://liuzhe.tk/note/2012/05/10/pythonrss.html</link>
+      <description>&lt;p&gt;马伟伟同学说过想做一个rss的采集，这几天找出时间，看feedparser这个rss的抓取模块&lt;/p&gt;
+</description>
+      <pubDate>Thu, 10 May 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/note/2012/05/10/pythonrss.html</guid>
+      <dc:date>2012-05-10T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>rails生成新项目出错-ubuntu</title>
+      <link>http://liuzhe.tk/note/2012/05/08/rails_error.html</link>
+      <description>&lt;p&gt;rails 生成新项目时 bundle install 出错:&lt;/p&gt;
+</description>
+      <pubDate>Tue, 08 May 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/note/2012/05/08/rails_error.html</guid>
+      <dc:date>2012-05-08T00:00:00+08:00</dc:date>
+    </item>
+    <item>
+      <title>First blog</title>
+      <link>http://liuzhe.tk/%E9%97%B2/2012/02/26/first_post.html</link>
+      <description>&lt;p&gt;弄完blog,发一个 。&lt;/p&gt;
+</description>
+      <pubDate>Sun, 26 Feb 2012 00:00:00 +0800</pubDate>
+      <guid>http://liuzhe.tk/%E9%97%B2/2012/02/26/first_post.html</guid>
+      <dc:date>2012-02-26T00:00:00+08:00</dc:date>
+    </item>
+    <dc:date>2014-01-11T00:00:00+08:00</dc:date>
+  </channel>
+</rss>
