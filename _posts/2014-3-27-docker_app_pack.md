@@ -13,7 +13,7 @@ https://www.docker.io/
 我的需求
 ==========
 
-此次希望将要发布的app和执行环境进行打包, app使用python djnago开发。
+此次希望将要发布的app和执行环境进行打包, app使用python django开发。
 
 这次我打算打包的步骤为：
 
