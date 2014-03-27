@@ -18,11 +18,9 @@ https://www.docker.io/
 这次我打算打包的步骤为：
 
 
-> 自己制作docker的base image
-
-> 配置app执行环境
-
-> 将制作好的容器导出成文件，用于其他机器的导入
+*  自己制作docker的base image
+*  配置app执行环境
+*  将制作好的容器导出成文件，用于其他机器的导入
 
 
 开始执行
