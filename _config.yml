@@ -1,7 +1,0 @@
-title: Zhe'blog
-name: liuzhe
-markdown: redcarpet
-markdown_ext:  markdown,mkd,mkdn,md
-pygments: true
-rss_name: feed.xml
-url: http://liuzhe.tk
